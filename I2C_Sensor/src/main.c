@@ -7,6 +7,7 @@
 #include <drivers/i2c.h>
 
 #include "ina226.h"
+#include "shtc3.h"
 
 void main(void)
 {
@@ -22,6 +23,20 @@ void main(void)
   	} else {
         i2c_configure(dev, I2C_SPEED_SET(I2C_SPEED_STANDARD));
   	}
+
+	uint16_t temperature;
+	uint16_t humidity;
+
+	shtc3_readid(dev);
+
+	while (1) {
+		shtc3_wakeup(dev);
+		k_msleep(1);
+		shtc3_GetTempAndHumidity(dev, &temperature, &humidity);
+		shtc3_sleep(dev);
+		printk("Temp %.02f RH %.01f\r\n", shtc3_convert_temp(temperature), shtc3_convert_humd(humidity)); 
+		k_msleep(1000);
+	}
 
 	ina226_init(dev);
 
