@@ -1,8 +1,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <device.h>
-#include <zephyr.h>
+#include <zephyr/device.h>
+#include <zephyr/kernel.h>
 
 void main(void)
 {
