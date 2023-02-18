@@ -215,6 +215,12 @@ void radio_set_channel(uint8_t channel)
 	nrf_radio_frequency_set(NRF_RADIO, frequency);
 }
 
+void radio_set_frequency(uint16_t frequency)
+{
+	printk("Frequency = %dMHz\n", frequency);
+	nrf_radio_frequency_set(NRF_RADIO, frequency);
+}
+
 void radio_enable_interrupt(void)
 {
 	irq_connect_dynamic(RADIO_IRQn, IRQ_PRIO_LOWEST, radio_handler, NULL, 0);

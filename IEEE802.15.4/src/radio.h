@@ -22,6 +22,7 @@ void radio_tx(void);
 void radio_disable(void);
 void radio_config(nrf_radio_mode_t mode, enum transmit_pattern pattern);
 void radio_set_channel(uint8_t channel);
+void radio_set_frequency(uint16_t frequency);
 void radio_enable_interrupt(void);
 void radio_handler(const void *context);
 void radio_power_set(int8_t power);
