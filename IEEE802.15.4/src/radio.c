@@ -229,7 +229,7 @@ void radio_handler(const void *context)
 
 		printk("RX %03d: ",rx_packet_cnt);
 		int len = rx_packet[0];
-		for (int i = 1; i <= len; i++) {
+		for (int i = 0; i <= len; i++) {
 			printk("%02X ", rx_packet[i]);
 		}
 		printk("\n");
